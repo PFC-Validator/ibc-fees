@@ -767,6 +767,8 @@ dependencies = [
  "env_logger",
  "log",
  "prost",
+ "rust_decimal",
+ "rust_decimal_macros",
  "secp256k1",
  "serde",
  "serde_json",

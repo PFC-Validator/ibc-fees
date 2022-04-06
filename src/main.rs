@@ -11,7 +11,7 @@ use terra_proto::generated::cosmos::crypto::secp256k1::PubKey;
 //use terra_proto::generated::ibc::applications::transfer::v1::MsgTransfer;
 //use terra_proto::generated::ibc::core::channel::v1::{MsgAcknowledgement, MsgRecvPacket};
 //use terra_proto::generated::ibc::core::client::v1::{MsgCreateClient, MsgUpdateClient};
-//use terra_proto::generated::ibc::core::connection::v1::MsgConnectionOpenInit;
+//use terra_proto::generated::ibc::core::connection::v1::{MsgConnectionOpenInit,MsgConnectionOpenConfirm,MsgConnectionOpenAck,MsgConnectionOpenTry};
 use terra_rust_api::{PublicKey, Terra};
 use terra_rust_cli::cli_helpers;
 
@@ -78,15 +78,22 @@ fn process_tx(hex: &str) -> anyhow::Result<Option<IBCTx>> {
                    }
                    //   "/terra.oracle.v1beta1.MsgAggregateExchangeRateVote" => {}
                    //   "/terra.oracle.v1beta1.MsgAggregateExchangeRatePrevote" => {}
+                   "/ibc.core.connection.v1.MsgConnectionOpenConfirm" => {  has_ibc = true}
+                   "/ibc.core.connection.v1.MsgConnectionOpenAck" => {  has_ibc = true}
+                   "/ibc.core.connection.v1.MsgConnectionOpenTry" => {  has_ibc = true}
                    _ => {
                        if msg.type_url.starts_with("/ibc") {
                            log::info!("TYPE={}", msg.type_url.as_str())
+                             has_ibc = true
                        }
                    }
                }
 
             */
-            if msg.type_url.as_str().starts_with("/ibc") {
+            // Transfers are not paid by relayers. so ignore them.
+            if msg.type_url.as_str().starts_with("/ibc")
+                && msg.type_url != "/ibc.applications.transfer.v1.MsgTransfer"
+            {
                 has_ibc = true
             }
         }

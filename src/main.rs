@@ -99,7 +99,7 @@ fn process_tx(hex: &str) -> anyhow::Result<Option<IBCTx>> {
             if msg.type_url.as_str().starts_with("/ibc") {
                 if msg.type_url == "/ibc.core.client.v1.MsgUpdateClient" {
                     let upd = MsgUpdateClient::decode(msg.value.as_slice()).unwrap();
-                    println!("ClientID:{}", upd.client_id);
+                    //println!("ClientID:{}", upd.client_id);
                     client = upd.client_id.clone();
                 }
 

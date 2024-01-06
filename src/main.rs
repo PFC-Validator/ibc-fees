@@ -136,7 +136,7 @@ fn process_tx(hex: &str) -> anyhow::Result<Option<IBCTx>> {
                                 account: account.account()?,
                                 sequence: s.sequence,
                                 client,
-                                memo: body.memo.clone(),
+                                memo: body.memo.clone().replace(",","."),
                             };
                             return Ok(Some(ibc));
                         }

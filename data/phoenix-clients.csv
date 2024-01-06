@@ -1,4 +1,4 @@
-block,account,fees,src_port,src_channel
+block,account,fees,client,memo
 8397606,terra1hhzf9u376mg8zcuvx3jsls7t805kzcrs8055e7,75126uluna,07-tendermint-2,SynergyNodes.com Relayer | hermes 1.7.3+e529d255 (https://hermes.informal.systems)
 8397619,terra1hhzf9u376mg8zcuvx3jsls7t805kzcrs8055e7,47880uluna,07-tendermint-11,SynergyNodes.com Relayer | hermes 1.7.3+e529d255 (https://hermes.informal.systems)
 8397622,terra1hhzf9u376mg8zcuvx3jsls7t805kzcrs8055e7,40538uluna,07-tendermint-7,SynergyNodes.com Relayer | hermes 1.6.0+1c1cf029-dirty (https://hermes.informal.systems)
